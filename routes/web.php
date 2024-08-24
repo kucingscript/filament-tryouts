@@ -7,6 +7,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/tryouts/{id}', TryoutOnline::class)->name('tryouts');
 });
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return redirect('admin/login');
 })->name('login');
