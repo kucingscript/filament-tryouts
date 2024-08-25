@@ -27,7 +27,13 @@ class TryoutResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        return static::getModel()::where(function ($query) {
+            $is_super_admin = Auth::user()->hasRole('super_admin');
+
+            if (!$is_super_admin) {
+                $query->where('user_id', Auth::user()->id);
+            }
+        })->count();
     }
 
     public static function form(Form $form): Form

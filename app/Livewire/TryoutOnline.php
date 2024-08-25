@@ -33,7 +33,7 @@ class TryoutOnline extends Component
 
         $this->package = Package::with('questions.question.options')->find($decryptedId);
         if ($this->package) {
-            $this->questions = $this->package->questions;
+            $this->questions = $this->package->questions->shuffle();
             if ($this->questions->isNotEmpty()) {
                 $this->currentPackageQuestion = $this->questions->first();
             }
