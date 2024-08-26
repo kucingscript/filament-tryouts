@@ -5,6 +5,7 @@ namespace App\Filament\Auth;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Filament\Pages\Auth\Login;
+use Illuminate\Validation\ValidationException;
 
 class CustomLogin extends Login
 {
