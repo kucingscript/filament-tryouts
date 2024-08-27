@@ -9,4 +9,4 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', function () {
     return redirect('admin/login');
-})->name('login')->middleware('throttle:limit');
+})->name('login');
