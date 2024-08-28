@@ -36,6 +36,8 @@ class TryoutResource extends Resource
         })->count();
     }
 
+    protected static ?string $navigationBadgeTooltip = 'Jumlah Hasil Tryout';
+
     public static function form(Form $form): Form
     {
         return $form

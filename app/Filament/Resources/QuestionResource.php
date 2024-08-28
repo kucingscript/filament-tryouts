@@ -26,6 +26,8 @@ class QuestionResource extends Resource
         return static::getModel()::count();
     }
 
+    protected static ?string $navigationBadgeTooltip = 'Jumlah Soal';
+
     public static function form(Form $form): Form
     {
         return $form

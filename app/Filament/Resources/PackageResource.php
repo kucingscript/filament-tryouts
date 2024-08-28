@@ -26,6 +26,8 @@ class PackageResource extends Resource
         return static::getModel()::count();
     }
 
+    protected static ?string $navigationBadgeTooltip = 'Jumlah Paket Soal';
+
     public static function form(Form $form): Form
     {
         return $form

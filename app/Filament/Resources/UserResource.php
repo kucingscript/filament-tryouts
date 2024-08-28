@@ -32,6 +32,8 @@ class UserResource extends Resource
         return static::getModel()::count();
     }
 
+    protected static ?string $navigationBadgeTooltip = 'Jumlah User';
+
     public static function form(Form $form): Form
     {
         return $form
