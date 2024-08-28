@@ -48,7 +48,9 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('roles')
                     ->required()
-                    ->relationship('roles', 'name')->preload(),
+                    ->relationship('roles', 'name')
+                    ->preload()
+                    ->searchable(),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
