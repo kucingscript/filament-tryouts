@@ -42,6 +42,7 @@ class UserResource extends Resource
                     ->email()
                     ->required(),
                 Forms\Components\TextInput::make('username')
+                    ->unique(ignoreRecord: true)
                     ->required(),
                 Forms\Components\Select::make('roles')
                     ->required()
@@ -50,14 +51,14 @@ class UserResource extends Resource
                     ->password()
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                     ->revealable()
-                    ->minLength(6)
+                    ->minLength(8)
                     ->dehydrated(fn($state) => filled($state))
                     ->dehydrateStateUsing(fn($state) => Hash::make($state)),
                 Forms\Components\TextInput::make('password confirmation')
                     ->password()
                     ->revealable()
                     ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
-                    ->minLength(6)
+                    ->minLength(8)
                     ->same('password')
                     ->dehydrated(false),
             ]);
