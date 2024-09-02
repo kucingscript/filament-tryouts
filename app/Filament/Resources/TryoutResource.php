@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TryoutResource\Pages;
-use App\Filament\Resources\TryoutResource\RelationManagers;
 use App\Models\Tryout;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -112,7 +111,7 @@ class TryoutResource extends Resource
             ->actions([
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
-                Tables\Actions\RestoreAction::make(),
+                Tables\Actions\RestoreAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -129,6 +128,14 @@ class TryoutResource extends Resource
                         ]),
                     ]),
                 ]),
+            ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
             ]);
     }
 

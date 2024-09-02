@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PackageResource\Pages;
-use App\Filament\Resources\PackageResource\RelationManagers;
 use App\Models\Package;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -112,6 +111,10 @@ class PackageResource extends Resource
                     ->openUrlInNewTab()
                     ->icon('heroicon-o-paper-airplane')
                     ->visible(function (Package $record) {
+                        if ($record->deleted_at) {
+                            return false;
+                        }
+
                         return !\App\Models\TryOut::where('user_id', auth()->id())
                             ->where('package_id', $record->id)
                             ->whereNotNull('finished_at')
@@ -127,6 +130,14 @@ class PackageResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
             ]);
     }
 
