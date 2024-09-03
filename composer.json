@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.2",
         "bezhansalleh/filament-shield": "^3.2",
+        "dyrynda/laravel-cascade-soft-deletes": "^4.4",
         "filament/filament": "3.2.102",
         "joaopaulolndev/filament-edit-profile": "^1.0",
         "laravel/framework": "^11.9",

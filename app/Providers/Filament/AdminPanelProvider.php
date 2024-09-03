@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login(CustomLogin::class)
             ->favicon(asset('images/favicon.ico'))
-            ->brandName('AceExam')
+            ->brandName('KucingMenangis')
             ->colors([
                 'danger' => Color::Rose,
                 'gray' => Color::Gray,
