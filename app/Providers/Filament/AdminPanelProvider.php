@@ -78,6 +78,8 @@ class AdminPanelProvider extends PanelProvider
                     ->setIcon('heroicon-o-user')
                     ->shouldShowDeleteAccountForm(false)
                     ->shouldShowBrowserSessionsForm(false)
-            ]);
+            ])
+            ->unsavedChangesAlerts()
+            ->spa();
     }
 }
